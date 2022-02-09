@@ -18,7 +18,7 @@ class SimplifiedBLECallbacks: public BLECharacteristicCallbacks {
     }
 };
 
-    SimplifiedBLE::SimplifiedBLE(char* service_name, char* service_uuid, char* characteristic_uuid){
+    SimplifiedBLE::SimplifiedBLE(char* service_name, char* service_uuid, char* characteristic_uuid, BLECharacteristicCallbacks* callbacks){
         BLEDevice::init(service_name);
         BLEServer *pServer = BLEDevice::createServer();
 
@@ -30,7 +30,9 @@ class SimplifiedBLECallbacks: public BLECharacteristicCallbacks {
                                                BLECharacteristic::PROPERTY_WRITE
                                              );
 
-        pCharacteristic->setCallbacks(new SimplifiedBLECallbacks());
+        if(callbacks == NULL) callbacks = new SimplifiedBLECallbacks();
+
+        pCharacteristic->setCallbacks(callbacks);
         pService->start();
 
         BLEAdvertising *pAdvertising = pServer->getAdvertising();

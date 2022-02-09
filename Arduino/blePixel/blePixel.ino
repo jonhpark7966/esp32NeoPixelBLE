@@ -6,13 +6,15 @@
 #define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
 
 
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  SimplifiedBLE ble = SimplifiedBLE("jh_esp32", SERVICE_UUID, CHARACTERISTIC_UUID);
+  SimplifiedBLE ble = SimplifiedBLE("jh_esp32", SERVICE_UUID, CHARACTERISTIC_UUID, NULL);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  
 
 }

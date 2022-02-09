@@ -6,10 +6,12 @@
 #ifndef SIMPBLE_H
 #define SIMPBLE_H
 
+#include <BLECharacteristic.h>
+
 
 class SimplifiedBLE{
   public:
-    SimplifiedBLE(char* service_name, char* service_uuid, char* characteristic_uuid);
+    SimplifiedBLE(char* service_name, char* service_uuid, char* characteristic_uuid, BLECharacteristicCallbacks* callbacks);
 };
 
 #endif
