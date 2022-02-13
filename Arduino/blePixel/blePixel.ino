@@ -1,4 +1,5 @@
 #include "SimplifiedBLE.h"
+#include "StateMachine.h"
 
 // See the following for generating UUIDs:
 // https://www.uuidgenerator.net/
@@ -10,7 +11,8 @@
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  SimplifiedBLE ble = SimplifiedBLE("jh_esp32", SERVICE_UUID, CHARACTERISTIC_UUID, NULL);
+  StateMachine* stateMachine = new StaticNeopixelStateMachine();
+  SimplifiedBLE ble = SimplifiedBLE("jh_esp32", SERVICE_UUID, CHARACTERISTIC_UUID, stateMachine->getBLECallbacks());
 }
 
 void loop() {
